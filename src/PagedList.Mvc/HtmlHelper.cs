@@ -20,9 +20,11 @@ namespace PagedList.Mvc
 
 		private static TagBuilder WrapInListItem(TagBuilder inner, PagedListRenderOptions options, params string[] classes)
 		{
+            		inner.AddCssClass("page-link");
 			var li = new TagBuilder("li");
 			foreach (var @class in classes)
 				li.AddCssClass(@class);
+			li.AddCssClass("page-item");
 			if (options.FunctionToTransformEachPageLink != null)
 				return options.FunctionToTransformEachPageLink(li, inner);
 			li.InnerHtml = inner.ToString();
